@@ -39,6 +39,10 @@ const Tracks = sequelize.define(
     }
 );
 
+/**
+ * Implementando modelo personalizado
+ */
+
 Tracks.findAllData = function (){
     Tracks.belongsTo(Storage,{
         foreignKey:'mediaId',
