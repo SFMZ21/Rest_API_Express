@@ -51,10 +51,11 @@ const createItem= async (req, res) =>{
         filename: file.filename,
         url: `${PUBLIC_URL}/${file.filename}`
         }
-        const data = await storageModel.create(body)
-        res.send({file})
+        const data = await storageModel.create(fileData)
+        res.send({data})
 
     }catch (e) {
+        console.log(e)
         handleHttpError(res,"ERROR_CREATE_ITEM")
     }
 };
