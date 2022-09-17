@@ -12,8 +12,12 @@ const swaggerDefinition ={
     },
     servers:[
         {
-            url:"http://localhost:3001/api"
-        }
+            url:"http://localhost:3001/api",
+            
+        },
+        {
+            url:"https://apinodefabi.herokuapp.com/api",
+        },
     ],
    components:{
     schemas:{
