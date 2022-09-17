@@ -7,6 +7,7 @@ const dbConnnectNoSql =require('./config/mongo')
 const {dbConnectMySQL} = require("./config/mysql")
 const app= express()
 const ENGINE_DB = process.env.ENGINE_DB;
+const NODE_ENV = process.env.NODE_ENV ||'development';
 app.use(cors())
 app.use(express.json())
 app.use(express.static("storage"))
@@ -23,9 +24,10 @@ app.use('/documentation', swaggerUI.serve, swaggerUI.setup(openApiConfiguration)
 
 app.use("/api",require("./routes"))
 
-
-app.listen(port, () =>{
-    console.log(`http://localhost:${port}`)
-});
+if(NODE_ENV !== 'test'){
+    app.listen(port);
+}
 
 (ENGINE_DB === 'nosql') ? dbConnnectNoSql() : dbConnectMySQL();
+ 
+module.exports= app;
