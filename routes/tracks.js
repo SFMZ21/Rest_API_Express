@@ -22,7 +22,7 @@ const checkRol = require("../middleware/rol");
  *                  '403':
  *                      description: "Error al obtener la data"
  */
-router.get("/",getItems);
+router.get("/",authMiddleware,getItems);
 
 /**
  * Get details from tracks
